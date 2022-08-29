@@ -1,0 +1,7 @@
+{
+  "name": "FutLive",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
