@@ -1,0 +1,32 @@
+ion-row {
+    margin: 1rem 0;
+}
+
+ion-col {
+    padding: 0;
+}
+
+.standings {
+    font-size: smaller;
+    padding: 0;
+    width: 100%;
+}
+
+.team-info {
+    display: flex;
+    align-items: center;
+}
+
+.team-logo {
+    width: 1.5rem;
+    margin: 0 0.5rem;
+}
+
+.spinner-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(3);
+    width: 100%;
+    height: 20rem;
+}

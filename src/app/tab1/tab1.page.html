@@ -1,7 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <app-logo-header></app-logo-header>
     <ion-title>
-      Tab 1
+      Início
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,5 +14,58 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Ao vivo</ion-label>
+    </ion-item-divider>
+
+    <div class="spinner-div" *ngIf="liveMatchesMap && liveMatchesMap.size === 0">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+    <div *ngIf="!liveMatchesMap">
+      <p class="no-matches">Nenhuma partida está sendo disputada neste momento</p>
+    </div>
+    
+    <ion-item *ngIf="liveMatchesMap && liveMatchesMap.size !== 0">
+      <div class="live-matches">
+        <ion-card class="live-match-card" *ngFor="let match of liveMatchesMap | keyvalue">
+          <ion-card-header class="header">
+            <ion-card-subtitle class="subtitle">
+              <ion-img class="league-logo" [src]="match.value.leagueLogo"></ion-img>
+            </ion-card-subtitle>
+            <ion-card-title class="league-name">
+              <p>{{match.value.leagueName}}</p>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="teams">
+              <ion-img class="team-logo" [src]="match.value.home.logo"></ion-img>
+              <div class="elapsed-time">
+                <ion-spinner class="time-spinner" name="dots"></ion-spinner>
+                <p>{{match.value.elapsedTime}}'</p>
+              </div>
+              <ion-img class="team-logo" [src]="match.value.away.logo"></ion-img>
+            </div>
+            <p class="score"><span>{{match.value.homeGoals}}</span><span>x</span><span>{{match.value.awayGoals}}</span></p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-item>
+
+    <ion-item-divider>
+      <ion-label>Últimas Notícias</ion-label>
+    </ion-item-divider>
+    
+    <div class="spinner-div" *ngIf="!latestNews || latestNews.length === 0">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+    <ion-item *ngFor="let newsItem of latestNews">
+      <div class="news-div">
+        <a class="news-link" [href]="newsItem.link">{{newsItem.title}}</a>
+        <p class="news-date">{{newsItem.date}}</p>
+      </div>
+    </ion-item>
+  </ion-item-group>
+
 </ion-content>
