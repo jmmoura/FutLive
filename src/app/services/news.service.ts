@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../environments/environment';
 import { News } from 'src/model/News';
 
 @Injectable({
@@ -10,7 +11,7 @@ import { News } from 'src/model/News';
 export class NewsService {
   latestNews: News[];
   RAPIDAPI_HOST = 'google-search3.p.rapidapi.com';
-  RAPIDAPI_KEY  = '49c023ddfdmsh2813edfe3cb0c22p145fa7jsn3b15ec421c2f';
+  RAPIDAPI_KEY  = environment.rapidApiKey;
   RAPIDAPI_URL = 'https://google-search3.p.rapidapi.com/api/v1/search/';
   X_USER_AGENT = 'mobile';
   X_PROXY_LOCATION = 'BR';

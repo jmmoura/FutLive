@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { interval, Observable } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
 import { LiveMatch } from "src/model/LiveMatch";
 import { Team } from 'src/model/Team';
 
@@ -12,7 +13,7 @@ import { Team } from 'src/model/Team';
 export class LiveMatchesService {
   liveMatchesMap: Map<string, LiveMatch>;
   RAPIDAPI_HOST = 'api-football-v1.p.rapidapi.com';
-  RAPIDAPI_KEY  = '49c023ddfdmsh2813edfe3cb0c22p145fa7jsn3b15ec421c2f';
+  RAPIDAPI_KEY  = environment.rapidApiKey;
   RAPIDAPI_URL = 'https://api-football-v1.p.rapidapi.com/v3/';
 
   constructor(private httpClient: HttpClient) {
